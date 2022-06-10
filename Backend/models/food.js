@@ -14,11 +14,11 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Food.init({
-    calories: DataTypes.INTEGER,
-    name: DataTypes.STRING,
-    proteins: DataTypes.INTEGER,
-    fats: DataTypes.INTEGER,
-    carbs: DataTypes.INTEGER
+    calories: sequelize.INT,
+    name: sequelize.STRING,
+    proteins: sequelize.INT,
+    fats: sequelize.INT,
+    carbs: sequelize.INT
   }, {
     sequelize,
     modelName: 'Food',
