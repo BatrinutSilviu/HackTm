@@ -6,9 +6,8 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/test', function(req, res, next) {
-  console.log("intra");
-  const { Sequelize } = require('sequelize');
+router.get('/test', async function (req, res, next) {
+  const {Sequelize} = require('sequelize');
 
   const sequelize = new Sequelize('hacktm', 'root', 'root', {
     host: 'localhost',
@@ -17,12 +16,14 @@ router.get('/test', function(req, res, next) {
 
   try {
     sequelize.authenticate();
-    console.log('Connection has been established successfully.');
+    const [results] = await sequelize.query("SELECT * FROM Foods WHERE id = 1");
+    res.send(JSON.stringify(results));
   } catch (error) {
     console.error('Unable to connect to the database:', error);
   }
   sequelize.close();
-  res.render('index', { title: 'Alo' });
 });
+
+
 
 module.exports = router;

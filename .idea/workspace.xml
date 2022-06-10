@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d713d83-e00e-40b1-9c8c-3fe7afd90459" name="Changes" comment="test">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="0d713d83-e00e-40b1-9c8c-3fe7afd90459" name="Changes" comment="first migrations">
+      <change afterPath="$PROJECT_DIR$/Backend/migrations/20220610200140-populate-foods.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/migrations/20220610191134-create-goal.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/migrations/20220610191134-create-goal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Backend/models/goal.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/models/goal.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Backend/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/routes/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,7 +47,7 @@
       <option name="presentableId" value="Default" />
       <updated>1654878161117</updated>
       <workItem from="1654878162440" duration="1417000" />
-      <workItem from="1654883582340" duration="4851000" />
+      <workItem from="1654883582340" duration="7373000" />
     </task>
     <task id="LOCAL-00001" summary="restructurare">
       <created>1654883427231</created>
@@ -83,7 +84,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654883999181</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="first migrations">
+      <created>1654890312195</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1654890312195</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -105,6 +113,7 @@
     <MESSAGE value="restructurare2" />
     <MESSAGE value="gitignore" />
     <MESSAGE value="test" />
-    <option name="LAST_COMMIT_MESSAGE" value="test" />
+    <MESSAGE value="first migrations" />
+    <option name="LAST_COMMIT_MESSAGE" value="first migrations" />
   </component>
 </project>
