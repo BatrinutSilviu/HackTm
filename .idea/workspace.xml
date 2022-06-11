@@ -1,11 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0d713d83-e00e-40b1-9c8c-3fe7afd90459" name="Changes" comment="food migration+&#10;first successful api call">
-      <change afterPath="$PROJECT_DIR$/Backend/bin/dbHelper.js" afterDir="false" />
+    <list default="true" id="0d713d83-e00e-40b1-9c8c-3fe7afd90459" name="Changes" comment="Implemented Food get and add">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/models/food.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/models/food.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Backend/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Backend/routes/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +48,7 @@
       <option name="presentableId" value="Default" />
       <updated>1654878161117</updated>
       <workItem from="1654878162440" duration="1417000" />
-      <workItem from="1654883582340" duration="11661000" />
+      <workItem from="1654883582340" duration="12271000" />
     </task>
     <task id="LOCAL-00001" summary="restructurare">
       <created>1654883427231</created>
@@ -102,7 +99,14 @@
       <option name="project" value="LOCAL" />
       <updated>1654892672879</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Implemented Food get and add">
+      <created>1654896912606</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1654896912606</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -126,6 +130,7 @@
     <MESSAGE value="test" />
     <MESSAGE value="first migrations" />
     <MESSAGE value="food migration+&#10;first successful api call" />
-    <option name="LAST_COMMIT_MESSAGE" value="food migration+&#10;first successful api call" />
+    <MESSAGE value="Implemented Food get and add" />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented Food get and add" />
   </component>
 </project>
