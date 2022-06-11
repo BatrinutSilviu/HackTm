@@ -4,14 +4,11 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.util.Log;
 import android.view.View;
 
-import androidx.constraintlayout.solver.widgets.Optimizer;
 import androidx.navigation.NavController;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
 
@@ -19,10 +16,16 @@ import com.example.hacktmfrontend.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
+
+import org.json.JSONException;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -89,37 +92,57 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     public void onClick(View view)
     {
-        EditText calories = (EditText)findViewById(R.id.Calories);
-        EditText proteins = (EditText)findViewById(R.id.proteins);
-        EditText carbs = (EditText)findViewById(R.id.carbs);
-        EditText fats = (EditText)findViewById(R.id.fats);
-        EditText days = (EditText)findViewById(R.id.days);
-        EditText mealPerDay = (EditText)findViewById(R.id.mealsPerDay);
+        EditText caloriesComponent = (EditText)findViewById(R.id.Calories);
+        EditText proteinsComponent = (EditText)findViewById(R.id.proteins);
+        EditText carbsComponent = (EditText)findViewById(R.id.carbs);
+        EditText fatsComponent = (EditText)findViewById(R.id.fats);
+        EditText daysComponent = (EditText)findViewById(R.id.days);
+        EditText mealPerDayComponent = (EditText)findViewById(R.id.mealsPerDay);
 
-        GoalApiService helper = new GoalApiService(this);
-        helper.sendPost(
-                calories.getText().toString(),
-                proteins.getText().toString(),
-                carbs.getText().toString(),
-                fats.getText().toString());
+        int calories = Integer.parseInt(caloriesComponent.getText().toString());
+        int proteins = Integer.parseInt(proteinsComponent.getText().toString());
+        int carbs = Integer.parseInt(carbsComponent.getText().toString());
+        int fats = Integer.parseInt(fatsComponent.getText().toString());
+        int days = Integer.parseInt(daysComponent.getText().toString());
+        int mealPerDay = Integer.parseInt(mealPerDayComponent.getText().toString());
 
+//        GoalApiService helper = new GoalApiService(this);
+//        helper.sendPost(
+//                calories,
+//                proteins,
+//                carbs,
+//                fats);
+//
         OptimizerApiService optimizerApiService= new OptimizerApiService(this);
 
         try {
-            String result = optimizerApiService.getDiet(
-                    proteins.getText().toString(),
-                    carbs.getText().toString(),
-                    fats.getText().toString(),
-                    days.getText().toString(),
-                    mealPerDay.getText().toString());
+            String dietPlan = optimizerApiService.getDiet(
+                    proteins,
+                    carbs,
+                    fats,
+                    days,
+                    mealPerDay,
+                    calories);
 
-        } catch (IOException e) {
+            this.showDietPlan(dietPlan);
+        }
+        catch (JSONException | IOException e) {
             e.printStackTrace();
         }
 
         this.navigateToSecondFragment();
-//        StringRequest stringRequest = new StringRequest(Request.Method.GET, addGoalURL,
-//                response -> Log.i("da", "Response is: " + response), error -> Log.i("err", "Response is: " + error));
-//        queue.add(jsonOblect);
+    }
+
+    public void showDietPlan(String dietPlan) throws JSONException {
+        setContentView(R.layout.fragment_second);
+        ListView listView = (ListView) findViewById(R.id.listView1);
+        ArrayList<String> dietPlanArrayList = JsonToArrayListParser.parse(dietPlan);
+
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(
+                this,
+                android.R.layout.simple_list_item_1,
+                dietPlanArrayList );
+
+        listView.setAdapter(arrayAdapter);
     }
 }

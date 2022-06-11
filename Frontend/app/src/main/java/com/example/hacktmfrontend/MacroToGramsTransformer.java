@@ -1,19 +1,22 @@
 package com.example.hacktmfrontend;
 
-public class MacroToGramsTransformer {
-    public enum Macros{Protein, Carb, Fat};
+enum Macros{Protein, Carb, Fat};
 
-    public int transformToGrams(Macros macroType, int percentage, int calories)
+public class MacroToGramsTransformer {
+
+    public static int transformToGrams(Macros macroType, int percentage, int calories)
     {
         switch(macroType){
             case Carb:
             case Protein:{
-//                return (float) (percentage/100) * 4 * calories;
+                return (percentage * calories)/400;
             }
             case Fat:{
-                break;
+                return (percentage * calories)/900;
+            }
+            default:{
+                return 0;
             }
         }
-        return 1;
     }
 }

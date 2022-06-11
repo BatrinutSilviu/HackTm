@@ -2,12 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0d713d83-e00e-40b1-9c8c-3fe7afd90459" name="Changes" comment="Added goal controller">
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/java/com/example/hacktmfrontend/MacroToGramsTransformer.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/java/com/example/hacktmfrontend/OptimizerApiService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Frontend/app/src/main/java/com/example/hacktmfrontend/JsonToArrayListParser.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/app/src/main/java/com/example/hacktmfrontend/GoalApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/app/src/main/java/com/example/hacktmfrontend/GoalApiService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/app/src/main/java/com/example/hacktmfrontend/MacroToGramsTransformer.java" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/app/src/main/java/com/example/hacktmfrontend/MacroToGramsTransformer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Frontend/app/src/main/java/com/example/hacktmfrontend/MainActivity.java" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/app/src/main/java/com/example/hacktmfrontend/MainActivity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Frontend/app/src/main/res/layout/fragment_first.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/layout/fragment_first.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Optimizer/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/Optimizer/app.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/app/src/main/java/com/example/hacktmfrontend/OptimizerApiService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/app/src/main/java/com/example/hacktmfrontend/OptimizerApiService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Frontend/app/src/main/res/layout/fragment_second.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Frontend/app/src/main/res/layout/fragment_second.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +55,7 @@
       <option name="presentableId" value="Default" />
       <updated>1654878161117</updated>
       <workItem from="1654878162440" duration="1417000" />
-      <workItem from="1654883582340" duration="26226000" />
+      <workItem from="1654883582340" duration="27154000" />
     </task>
     <task id="LOCAL-00001" summary="restructurare">
       <created>1654883427231</created>

@@ -21,18 +21,21 @@ public class OptimizerApiService {
 
     public OptimizerApiService(Context context){
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-
         StrictMode.setThreadPolicy(policy);
     }
 
-    public String getDiet(String proteins, String carbs, String fats, String days, String mealsPerDay) throws IOException
+    public String getDiet(int proteins, int carbs, int fats, int days, int mealsPerDay, int calories) throws IOException
     {
+        int proteinGrams = MacroToGramsTransformer.transformToGrams(Macros.Protein, proteins, calories);
+        int carbGrams = MacroToGramsTransformer.transformToGrams(Macros.Carb, carbs, calories);
+        int fatGrams = MacroToGramsTransformer.transformToGrams(Macros.Fat,fats, calories);
+
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
         MediaType mediaType = MediaType.parse("application/json");
-        RequestBody body = RequestBody.create(mediaType, "{\n    \"proteins\": " + proteins +
-                ",\n    \"carbs\": " + carbs + ",\n    \"fat\": " + fats + ",\n    \"days\": " + days +
-                ",\n    \"meals_per_day\": " + mealsPerDay + "\n}");
+        RequestBody body = RequestBody.create(mediaType, "{\n    \"proteins\":" + proteinGrams +
+                ",\n    \"carbs\":" + carbGrams + ",\n    \"fat\":" + fatGrams + ",\n    \"days\":" + days +
+                ",\n    \"meals_per_day\":" + mealsPerDay + "\n}");
 
         Request request = new Request.Builder()
                 .url(getDietUrl)

@@ -21,7 +21,7 @@ public class GoalApiService {
         this.queue = Volley.newRequestQueue(context);
     }
 
-    public void sendPost(String calories, String proteins, String carbs, String fats)
+    public void sendPost(int calories, int proteins, int carbs, int fats)
     {
         if (!this.validatePercentages(proteins, carbs, fats))
         {
@@ -50,10 +50,10 @@ public class GoalApiService {
             protected Map<String, String> getParams()
             {
                 Map<String, String>  params = new HashMap<String, String>();
-                params.put("target_calories", calories);
-                params.put("proteins", proteins);
-                params.put("carbs", carbs);
-                params.put("fats", fats);
+                params.put("target_calories", String.valueOf(calories));
+                params.put("proteins", String.valueOf(proteins));
+                params.put("carbs", String.valueOf(carbs));
+                params.put("fats", String.valueOf(fats));
 
                 return params;
             }
@@ -62,9 +62,9 @@ public class GoalApiService {
         this.queue.add(postRequest);
     }
 
-    public boolean validatePercentages(String proteins, String carbs, String fats)
+    public boolean validatePercentages(int proteins, int carbs, int fats)
     {
-        int sum = Integer.parseInt(proteins) + Integer.parseInt(carbs) + Integer.parseInt(fats);
+        int sum = proteins + carbs + fats;
 
         return sum == 100;
     }
