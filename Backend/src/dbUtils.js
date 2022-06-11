@@ -1,12 +1,13 @@
-function connectToDB()
-{
-    const {Sequelize} = require('sequelize');
+const DB_HOST = process.env.DB_HOST || 'localhost';
+
+async function connectToDB() {
+    const { Sequelize } = require('sequelize');
 
     const sequelize = new Sequelize('hacktm', 'root', 'root', {
-        host: 'localhost',
+        host: DB_HOST,
         dialect: 'mysql'
     });
-    sequelize.authenticate();
+    await sequelize.authenticate();
 
     return sequelize;
 }
