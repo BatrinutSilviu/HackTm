@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var dbHelper = require('../bin/dbHelper.js');
+var foodController = require('../src/FoodController');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
@@ -8,50 +8,33 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/getAllFoods', async function (req, res, next) {
-  let sequelize;
   try {
-    sequelize = dbHelper.connectToDB();
-    // const Food = require(`../models/food`)(sequelize)
-    // const results = await Food.findAll();
-    const [results] = await sequelize.query("SELECT * FROM Foods");
-    res.send(JSON.stringify(results));
+    let results = await foodController.getAllFoods();
+    res.send(results);
   } catch (error) {
     console.error('Unable to connect to the database:', error);
   }
-  finally {
-    sequelize.close();
-  }
 });
 
-router.get('/getFood/:id', async function (req, res, next){
-  let sequelize;
-  const {id} = req.params;
+router.get('/getFood/:id',async function (req, res, next){
   try {
-    sequelize = dbHelper.connectToDB();
-    const [results] = await sequelize.query("SELECT * FROM Foods WHERE id=" + id);
-    res.send(JSON.stringify(results));
+    const {id} = req.params;
+    let result = await foodController.getFood(id);
+    res.send(result);
   } catch (error) {
     console.error('Unable to connect to the database:', error);
   }
-  finally {
-    sequelize.close();
-  }
 });
 
-router.post('/addFood', async function (req, res, next){
-  let sequelize;
+router.post('/addFood',async function (req, res, next){
   try {
-    sequelize = dbHelper.connectToDB();
-    const [results] = await sequelize.query("INSERT INTO Foods (calories,name,proteins,fats,carbs) VALUES (" + req.body.calories + ",'gulie',123,123,123)");
+    let results = await foodController.insertFood(req);
     if (results){
       res.send("{'success':1}");
     }
     res.send("{'success':0}");
   } catch (error) {
     console.error('Unable to connect to the database:', error);
-  }
-  finally {
-    sequelize.close();
   }
 });
 
