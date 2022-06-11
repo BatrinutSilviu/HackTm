@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 
+import androidx.constraintlayout.solver.widgets.Optimizer;
 import androidx.navigation.NavController;
 import androidx.navigation.NavOptions;
 import androidx.navigation.Navigation;
@@ -20,6 +21,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.EditText;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
@@ -90,6 +93,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         EditText proteins = (EditText)findViewById(R.id.proteins);
         EditText carbs = (EditText)findViewById(R.id.carbs);
         EditText fats = (EditText)findViewById(R.id.fats);
+        EditText days = (EditText)findViewById(R.id.days);
+        EditText mealPerDay = (EditText)findViewById(R.id.mealsPerDay);
 
         GoalApiService helper = new GoalApiService(this);
         helper.sendPost(
@@ -98,10 +103,22 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 carbs.getText().toString(),
                 fats.getText().toString());
 
-        this.onSupportNavigateUp();
+        OptimizerApiService optimizerApiService= new OptimizerApiService(this);
+
+        try {
+            String result = optimizerApiService.getDiet(
+                    proteins.getText().toString(),
+                    carbs.getText().toString(),
+                    fats.getText().toString(),
+                    days.getText().toString(),
+                    mealPerDay.getText().toString());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         this.navigateToSecondFragment();
-//        StringRequest stringRequest = new StringRequest(Request.Method.POST, addGoalURL,
+//        StringRequest stringRequest = new StringRequest(Request.Method.GET, addGoalURL,
 //                response -> Log.i("da", "Response is: " + response), error -> Log.i("err", "Response is: " + error));
 //        queue.add(jsonOblect);
     }

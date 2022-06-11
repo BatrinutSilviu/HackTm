@@ -1,0 +1,46 @@
+package com.example.hacktmfrontend;
+
+import android.content.Context;
+import android.os.StrictMode;
+import android.util.Log;
+
+import com.android.volley.RequestQueue;
+
+import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+
+public class OptimizerApiService {
+    private final String getDietUrl = "http://10.10.9.209:5005/diet";
+
+    public OptimizerApiService(Context context){
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+    }
+
+    public String getDiet(String proteins, String carbs, String fats, String days, String mealsPerDay) throws IOException
+    {
+        OkHttpClient client = new OkHttpClient().newBuilder()
+                .build();
+        MediaType mediaType = MediaType.parse("application/json");
+        RequestBody body = RequestBody.create(mediaType, "{\n    \"proteins\": " + proteins +
+                ",\n    \"carbs\": " + carbs + ",\n    \"fat\": " + fats + ",\n    \"days\": " + days +
+                ",\n    \"meals_per_day\": " + mealsPerDay + "\n}");
+
+        Request request = new Request.Builder()
+                .url(getDietUrl)
+                .method("POST", body)
+                .addHeader("Content-Type", "application/json")
+                .build();
+        Response response = client.newCall(request).execute();
+
+        return response.body().string();
+    }
+}

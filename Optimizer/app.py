@@ -8,7 +8,7 @@ food_repo = FakeFoodRepository()
 optimizer = Optimizer(food_repo)
 
 
-@app.route('/diet')
+@app.route('/diet', methods = ['POST', 'GET'])
 def compute_diet():
     req = request.json
 
