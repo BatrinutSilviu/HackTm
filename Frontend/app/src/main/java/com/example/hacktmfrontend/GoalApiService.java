@@ -49,7 +49,7 @@ public class GoalApiService {
             @Override
             protected Map<String, String> getParams()
             {
-                Map<String, String>  params = new HashMap<String, String>();
+                Map<String, String>  params = new HashMap<>();
                 params.put("target_calories", String.valueOf(calories));
                 params.put("proteins", String.valueOf(proteins));
                 params.put("carbs", String.valueOf(carbs));

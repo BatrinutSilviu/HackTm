@@ -4,12 +4,10 @@ import android.content.Context;
 import android.os.StrictMode;
 import android.util.Log;
 
-import com.android.volley.RequestQueue;
-
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
+import okhttp3.Call;
+import okhttp3.Callback;
 import okhttp3.MediaType;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -20,8 +18,9 @@ public class OptimizerApiService {
     private final String getDietUrl = "http://10.10.9.209:5005/diet";
 
     public OptimizerApiService(Context context){
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
-        StrictMode.setThreadPolicy(policy);
+//        StrictMode.setThreadPolicy(new StrictMode.ThreadPolicy.Builder().permitAll().detectDiskReads().detectDiskWrites().detectNetwork().penaltyLog().build());
+        StrictMode.allowThreadDiskReads();
+        StrictMode.allowThreadDiskWrites();
     }
 
     public String getDiet(int proteins, int carbs, int fats, int days, int mealsPerDay, int calories) throws IOException
@@ -44,6 +43,19 @@ public class OptimizerApiService {
                 .build();
         Response response = client.newCall(request).execute();
 
-        return response.body().string();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                Log.d("Response code", String.valueOf(response.code()));
+                Log.d("Response body", response.body().toString());
+            }
+        });
+
+        return "";
     }
 }
